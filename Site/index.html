@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suellen Guedes Advogados · Direito Trabalhista e Previdenciário</title>
+  <meta name="description" content="Advocacia trabalhista e previdenciária com escuta, clareza e responsabilidade. Atendimento online em todo o Brasil e presencial em Crateús/CE.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ── RESET & TOKENS ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream:       #F7F4EF;
+      --cream-dark:  #EDE9E2;
+      --dark:        #1A1814;
+      --dark-2:      #252119;
+      --gold:        #B8956A;
+      --gold-light:  #D4B08C;
+      --gold-glow:   rgba(184,149,106,.22);
+      --muted:       #6B6560;
+      --border:      #E2DDD6;
+      --white:       #FFFFFF;
+      --r-card:      18px;
+      --r-btn:       50px;
+      --r-img:       16px;
+      --shadow:      0 8px 40px rgba(26,24,20,.10);
+      --shadow-gold: 0 8px 32px rgba(184,149,106,.18);
+      --transition:  .28s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.18; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILITIES ── */
+    .tag {
+      font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold); font-family: 'DM Sans', sans-serif; font-weight: 500;
+      display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .tag::before { display: none; }
+    .section-title { font-size: clamp(1.9rem,3vw,2.6rem); margin-top: .65rem; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 2rem; max-width: 1120px; margin: 0 auto; }
+    .divider-gold { width: 40px; height: 1.5px; background: var(--gold); margin: 1.25rem 0 0; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      padding: .85rem 2rem; border-radius: var(--r-btn);
+      font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+      letter-spacing: .03em; cursor: pointer; border: none;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), opacity var(--transition);
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark  { background: var(--dark); color: var(--cream); }
+    .btn-dark:hover  { opacity: .88; box-shadow: 0 6px 24px rgba(26,24,20,.3); }
+    .btn-gold  { background: var(--gold); color: var(--dark); }
+    .btn-gold:hover  { background: var(--gold-light); box-shadow: var(--shadow-gold); }
+    .btn-ghost { background: transparent; color: var(--cream); border: 1.5px solid rgba(247,244,239,.35); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline { background: transparent; color: var(--dark); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-wpp   { background: #25D366; color: #fff; }
+    .btn-wpp:hover { background: #1fba59; box-shadow: 0 6px 20px rgba(37,211,102,.35); }
+    .btn i { font-size: 15px; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .anim { opacity: 0; transition: opacity .7s ease, transform .7s ease; }
+    .fade-up   { transform: translateY(30px); }
+    .fade-in   { }
+    .slide-l   { transform: translateX(-36px); }
+    .slide-r   { transform: translateX(36px); }
+    .anim.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; } .d2 { transition-delay: .18s; }
+    .d3 { transition-delay: .28s; } .d4 { transition-delay: .38s; }
+    .d5 { transition-delay: .48s; }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 76px;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(247,244,239,.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 24px rgba(26,24,20,.07);
+      border-bottom: .5px solid var(--border);
+    }
+    .nav-logo img { height: 50px; width: auto; transition: filter var(--transition); }
+    .nav-logo .logo-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600;
+      color: var(--cream); letter-spacing: .02em; transition: color var(--transition);
+    }
+    .nav-logo .logo-text span { color: var(--gold); }
+    nav.scrolled .nav-logo .logo-text { color: var(--dark); }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px; letter-spacing: .04em; color: rgba(247,244,239,.8);
+      transition: color var(--transition); position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0); transition: transform var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    nav.scrolled .nav-links a { color: var(--muted); }
+    nav.scrolled .nav-links a:hover { color: var(--gold); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 6px; background: none; border: none; z-index: 1100;
+    }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); transition: transform .3s, opacity .3s; }
+    nav.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile Drawer */
+    .mob-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,24,20,.55); z-index: 999; backdrop-filter: blur(3px);
+    }
+    .mob-overlay.open { display: block; }
+    .mob-drawer {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
+      background: var(--cream); z-index: 1050;
+      padding: 7rem 2rem 2rem; display: flex; flex-direction: column; gap: 2rem;
+      transition: right .35s cubic-bezier(.4,0,.2,1); border-left: .5px solid var(--border);
+    }
+    .mob-drawer.open { right: 0; }
+    .mob-drawer ul { list-style: none; }
+    .mob-drawer ul li a {
+      display: block; padding: 1rem 0;
+      font-size: 1.2rem; font-family: 'Cormorant Garamond', serif; font-weight: 500;
+      color: var(--dark); border-bottom: .5px solid var(--border);
+    }
+    .mob-drawer .btn { width: 100%; justify-content: center; margin-top: .5rem; }
+
+    /* ══════════════════════════════════════
+       HERO — SPLIT: dark left / photo right
+    ══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 52% 48%;
+    }
+    .hero-left {
+      background: var(--dark);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 9rem 4rem 5rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    /* decorative top-right corner line */
+    .hero-left::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(180deg, transparent 0%, var(--gold) 40%, transparent 100%);
+      opacity: .3;
+    }
+    /* background texture dots */
+    .hero-left::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(184,149,106,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero-eyebrow { margin-bottom: 1.75rem; position: relative; z-index: 1; }
+    .hero-eyebrow .tag { color: var(--gold-light); }
+    .hero-eyebrow .tag::before { background: var(--gold-light); }
+    .hero h1 {
+      font-size: clamp(2.6rem,4.5vw,4rem);
+      color: var(--cream); line-height: 1.08;
+      margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      color: rgba(247,244,239,.6); font-size: 15px; line-height: 1.85;
+      max-width: 420px; margin-bottom: 2.5rem; position: relative; z-index: 1;
+    }
+    .hero-btns { display: flex; gap: .9rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .hero-badges {
+      margin-top: 3rem; display: flex; gap: .5rem; flex-wrap: wrap; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      background: rgba(247,244,239,.06); border: .5px solid rgba(184,149,106,.3);
+      color: rgba(247,244,239,.55); font-size: 11px; padding: .3rem .85rem;
+      border-radius: 50px; letter-spacing: .06em;
+    }
+    /* photo side */
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+    .hero-right img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .hero-right-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--dark) 0%, transparent 40%);
+    }
+
+    /* ══════════════════════════════════════
+       ÁREAS
+    ══════════════════════════════════════ */
+    .areas-wrap { background: var(--white); }
+    .areas-section { padding: 6rem 2rem; max-width: 1120px; margin: 0 auto; }
+    .section-header { margin-bottom: 3rem; }
+    .areas-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem;
+    }
+    .area-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--r-card); padding: 2.25rem 2rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+      cursor: default;
+    }
+    .area-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-gold);
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .area-icon-wrap {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(184,149,106,.1); border: 1px solid rgba(184,149,106,.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .area-card:hover .area-icon-wrap {
+      background: var(--gold); border-color: var(--gold); transform: scale(1.08);
+    }
+    .area-icon-wrap i { font-size: 22px; color: var(--gold); transition: color var(--transition); }
+    .area-card:hover .area-icon-wrap i { color: var(--dark); }
+    .area-card h3 { font-size: 1.35rem; margin-bottom: .4rem; }
+    .area-hook {
+      font-size: 13px; color: var(--gold); font-style: italic;
+      font-family: 'Cormorant Garamond', serif; margin-bottom: .85rem; display: block;
+    }
+    .area-card p { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+    .area-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+    .area-tag {
+      font-size: 11px; background: var(--cream-dark); border: .5px solid var(--border);
+      color: var(--muted); padding: .28rem .7rem; border-radius: 50px;
+    }
+    .area-card-link {
+      display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.5rem;
+      font-size: 13px; color: var(--gold); font-weight: 500;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .area-card:hover .area-card-link { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════
+       SOBRE
+    ══════════════════════════════════════ */
+    .about-section { background: var(--cream); padding: 6rem 2rem; }
+    .about-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center;
+    }
+    .about-photo-col { position: relative; }
+    .about-photo-main {
+      border-radius: var(--r-img); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-photo-main img { width: 100%; height: 600px; object-fit: cover; object-position: center top; }
+    /* floating accent block */
+    .about-photo-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--dark); border-radius: 14px; padding: 1.5rem 1.75rem;
+      border: .5px solid rgba(184,149,106,.25); z-index: 2;
+    }
+    .about-photo-badge .apb-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
+      color: var(--gold); line-height: 1; display: block;
+    }
+    .about-photo-badge .apb-txt {
+      font-size: 12px; color: rgba(247,244,239,.5);
+      letter-spacing: .08em; text-transform: uppercase; margin-top: .25rem;
+    }
+    .section-cta { margin-top: 3rem; text-align: center; }
+    .section-cta-dark { margin-top: 3rem; text-align: center; }
+    .about-text .tag { margin-bottom: .75rem; }
+    .about-text h2 { font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: .75rem; }
+    .about-sub { font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 1.25rem; font-family: 'Cormorant Garamond', serif; }
+    .about-text p { color: var(--muted); font-size: 14.5px; line-height: 1.88; margin-bottom: 1rem; }
+    .about-quote {
+      border-left: 2px solid var(--gold); padding-left: 1.25rem; margin: 1.75rem 0;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+      font-style: italic; color: var(--dark); line-height: 1.5;
+    }
+    .values-list { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .value-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; background: var(--white);
+      border-radius: 12px; border: 1px solid var(--border);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .value-row:hover { border-color: var(--gold); box-shadow: var(--shadow-gold); transform: translateX(4px); }
+    .value-icon-wrap {
+      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(184,149,106,.1); border: 1px solid rgba(184,149,106,.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .value-row:hover .value-icon-wrap { background: rgba(184,149,106,.2); border-color: var(--gold); }
+    .value-icon-wrap i { font-size: 17px; color: var(--gold); }
+    .value-row div strong { font-size: 14px; font-weight: 500; display: block; margin-bottom: .1rem; }
+    .value-row div span { font-size: 13px; color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       COMO FUNCIONA
+    ══════════════════════════════════════ */
+    .process-wrap { background: var(--dark); padding: 6rem 2rem; }
+    .process-inner { max-width: 1120px; margin: 0 auto; }
+    .process-inner .tag { color: var(--gold-light); }
+    .process-inner .tag::before { background: var(--gold-light); }
+    .process-inner h2 { color: var(--cream); }
+    .process-inner h2 em { color: var(--gold); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2rem; margin-top: 3.5rem; position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute; top: 36px; left: calc(16.67% + 18px); right: calc(16.67% + 18px);
+      height: 1px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+      opacity: .25;
+    }
+    .process-step {
+      text-align: center;
+      background: rgba(247,244,239,.04); border: .5px solid rgba(184,149,106,.12);
+      border-radius: var(--r-card); padding: 2.5rem 1.75rem;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .process-step:hover {
+      background: rgba(184,149,106,.08); border-color: rgba(184,149,106,.3);
+      transform: translateY(-6px);
+    }
+    .step-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 1.5px solid rgba(184,149,106,.4);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.75rem; background: rgba(184,149,106,.08);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .process-step:hover .step-circle { background: var(--gold); border-color: var(--gold); }
+    .step-circle i { font-size: 24px; color: var(--gold); transition: color var(--transition); }
+    .process-step:hover .step-circle i { color: var(--dark); }
+    .step-num {
+      display: block; font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(184,149,106,.5); margin-bottom: .5rem;
+    }
+    .process-step h3 { font-size: 1.25rem; color: var(--cream); margin-bottom: .65rem; }
+    .process-step p { font-size: 13.5px; color: rgba(247,244,239,.5); line-height: 1.78; }
+
+    /* ══════════════════════════════════════
+       EQUIPE
+    ══════════════════════════════════════ */
+    .team-wrap { background: var(--cream); padding: 6rem 2rem; }
+    .team-inner { max-width: 1120px; margin: 0 auto; }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 2rem; margin-top: 3rem; max-width: 720px;
+    }
+    .team-card {
+      border-radius: var(--r-img); overflow: hidden; position: relative;
+      cursor: default; transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .team-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(26,24,20,.18); }
+    .team-photo {
+      width: 100%; height: 420px;
+      object-fit: cover; object-position: center top;
+      display: block; transition: transform .5s ease;
+    }
+    .team-card:hover .team-photo { transform: scale(1.04); }
+    .team-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(26,24,20,.92) 100%);
+    }
+    .team-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.75rem;
+    }
+    .team-info strong { font-size: 1.15rem; color: var(--cream); display: block; font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+    .team-info span { font-size: 11.5px; color: var(--gold-light); letter-spacing: .08em; text-transform: uppercase; margin-top: .25rem; display: block; }
+    .team-icons { display: flex; gap: .6rem; margin-top: 1rem; }
+    .team-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: .5px solid rgba(184,149,106,.35); background: rgba(184,149,106,.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-light); font-size: 12px;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .team-icon:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+    /* ══════════════════════════════════════
+       DEPOIMENTOS
+    ══════════════════════════════════════ */
+    .testimonials-wrap { background: var(--white); padding: 6rem 2rem; }
+    .testimonials-inner { max-width: 1120px; margin: 0 auto; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem;
+    }
+    .testi-card {
+      border: 1px solid var(--border); border-radius: var(--r-card);
+      padding: 2.25rem 2rem; background: var(--cream);
+      position: relative; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .testi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); border-color: var(--gold); }
+    .testi-stars { display: flex; gap: .25rem; margin-bottom: 1.25rem; }
+    .testi-stars i { color: var(--gold); font-size: 13px; }
+    .testi-big-quote {
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold);
+      opacity: .15; line-height: .8; position: absolute; top: 1.5rem; right: 1.75rem;
+    }
+    .testi-card p {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+      font-style: italic; color: var(--dark); line-height: 1.78; margin-bottom: 1.5rem;
+    }
+    .testi-author { display: flex; align-items: center; gap: .85rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--dark); border: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: .95rem; flex-shrink: 0;
+    }
+    .testi-name strong { font-size: 14px; font-weight: 500; display: block; }
+    .testi-name span { font-size: 11.5px; color: var(--gold); text-transform: uppercase; letter-spacing: .08em; }
+
+    
+    /* ══════════════════════════════════════
+       CTA BANNER
+    ══════════════════════════════════════ */
+    .cta-section {
+      position: relative; overflow: hidden;
+      min-height: 520px; display: flex; align-items: center;
+    }
+    .cta-bg {
+      position: absolute; inset: 0;
+      background-image: url('../Fotos/GIO_8840.jpg');
+      background-size: cover; background-position: center 25%;
+    }
+    .cta-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,24,20,.88) 0%, rgba(26,24,20,.72) 100%);
+    }
+    .cta-content {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto; text-align: center; padding: 4rem 2rem;
+    }
+    .cta-content .divider-gold { margin: 0 auto 1.5rem; }
+    .cta-content h2 { font-size: clamp(2rem,4vw,2.9rem); color: var(--cream); margin-bottom: 1rem; }
+    .cta-content h2 em { color: var(--gold); font-style: italic; }
+    .cta-content p { color: rgba(247,244,239,.62); font-size: 15px; line-height: 1.85; margin-bottom: 2.25rem; }
+    .cta-btns { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; }
+    .cta-note { font-size: 12px; color: rgba(247,244,239,.3); margin-top: 1.5rem; display: block; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer { background: var(--dark); padding: 4rem 2rem 2rem; }
+    .footer-grid {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3.5rem;
+      padding-bottom: 3rem; border-bottom: .5px solid rgba(247,244,239,.07); margin-bottom: 2rem;
+    }
+    .footer-logo-img { height: 46px; filter: brightness(0) invert(1); opacity: .75; margin-bottom: 1.25rem; }
+    .footer-logo-text {
+      font-family: 'Cormorant Garamond', serif; color: var(--cream);
+      font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem;
+      display: none; /* show if img fails */
+    }
+    .footer-tagline { font-size: 13px; color: rgba(247,244,239,.38); line-height: 1.8; }
+    .footer-col h5 {
+      font-family: 'DM Sans', sans-serif; font-size: 11px;
+      letter-spacing: .13em; text-transform: uppercase; color: rgba(247,244,239,.3); margin-bottom: 1.5rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+    .footer-col ul li { display: flex; align-items: center; gap: .6rem; font-size: 13px; color: rgba(247,244,239,.48); }
+    .footer-col ul li i { color: var(--gold); width: 14px; font-size: 12px; }
+    .footer-col ul li a { transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-socials { display: flex; gap: .6rem; margin-top: 1.5rem; }
+    .footer-soc {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: .5px solid rgba(184,149,106,.25); background: rgba(184,149,106,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(247,244,239,.45); font-size: 13px;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .footer-soc:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .footer-bottom {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 12px; color: rgba(247,244,239,.22); }
+    .footer-oab { font-size: 11px; color: rgba(247,244,239,.18); letter-spacing: .07em; text-transform: uppercase; }
+
+    /* ══════════════════════════════════════
+       WHATSAPP FLOAT
+    ══════════════════════════════════════ */
+    .wpp-fab {
+      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 990;
+      display: flex; flex-direction: column; align-items: flex-end; gap: .5rem;
+    }
+    .wpp-fab-pulse {
+      position: absolute; width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(37,211,102,.35); animation: fabPulse 2.4s ease-out infinite;
+    }
+    @keyframes fabPulse {
+      0% { transform: scale(1); opacity: .7; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+    .wpp-fab a {
+      width: 58px; height: 58px; border-radius: 50%; background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,.4); position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .wpp-fab a:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,.55); }
+    .wpp-fab a i { color: #fff; font-size: 26px; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .areas-grid { grid-template-columns: repeat(2,1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links, nav > .btn { display: none; }
+      .hamburger { display: flex; }
+      /* hero stacks */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 55vw; min-height: 320px; }
+      .hero-left { padding: 7rem 1.5rem 3.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      /* areas */
+      .areas-section { padding: 4rem 1.5rem; }
+      .areas-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      /* about */
+      .about-section { padding: 4rem 1.5rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-main img { height: 380px; }
+      .about-photo-badge { right: 0; bottom: -1rem; }
+      /* process */
+      .process-wrap { padding: 4rem 1.5rem; }
+      .process-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .process-grid::before { display: none; }
+      /* team */
+      .team-wrap { padding: 4rem 1.5rem; }
+      .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .team-photo { height: 340px; }
+      /* testimonials */
+      .testimonials-wrap { padding: 4rem 1.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      /* atend */
+      .atend-wrap { padding: 4rem 1.5rem; }
+      .atend-grid { grid-template-columns: 1fr; }
+      /* cta */
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; justify-content: center; max-width: 340px; }
+      /* footer */
+      footer { padding: 3rem 1.5rem 1.75rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.9rem; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#inicio" class="nav-logo" id="navLogo">
+    <img src="../Identidade%20Visual/68.png" alt="Sueelen Guedes" id="navImg"
+         onerror="this.style.display='none';document.getElementById('navTxt').style.display='block'">
+    <span class="logo-text" id="navTxt" style="display:none">Sueelen Guedes <span>&amp;</span> Advogados</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#areas">Áreas</a></li>
+    <li><a href="#escritorio">O Escritório</a></li>
+    <li><a href="#equipe">Equipe</a></li>
+  </ul>
+  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+     class="btn btn-gold" target="_blank" rel="noopener" style="border-radius:50px;font-size:13px;padding:.6rem 1.4rem">
+    <i class="fa-brands fa-whatsapp"></i> Fale conosco
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-drawer" id="mobDrawer">
+  <ul>
+    <li><a href="#inicio" class="mob-link">Início</a></li>
+    <li><a href="#areas" class="mob-link">Áreas de atuação</a></li>
+    <li><a href="#escritorio" class="mob-link">O Escritório</a></li>
+    <li><a href="#equipe" class="mob-link">Equipe</a></li>
+  </ul>
+  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+     class="btn btn-wpp" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i> Falar pelo WhatsApp
+  </a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="inicio" class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow anim fade-in">
+      <span class="tag">Direito Trabalhista e Previdenciário</span>
+    </div>
+    <h1 class="anim fade-up d1">
+      Seus direitos merecem ser <em>entendidos</em>,<br>não só defendidos
+    </h1>
+    <p class="hero-sub anim fade-up d2">
+      Atendimento acolhedor, linguagem acessível e orientação técnica séria para trabalhadores, segurados do INSS e pequenos empresários em todo o Brasil.
+    </p>
+    <div class="hero-btns anim fade-up d3">
+      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+         class="btn btn-gold" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Quero uma orientação
+      </a>
+      <a href="#escritorio" class="btn btn-ghost">
+        Conheça o escritório
+      </a>
+    </div>
+    <div class="hero-badges anim fade-in d4">
+      <span class="hero-badge">Trabalhista</span>
+      <span class="hero-badge">Previdenciário</span>
+      <span class="hero-badge">Preventivo</span>
+      <span class="hero-badge">Online · Todo o Brasil</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="../Fotos/GIO_8657.jpg" alt="Sueelen Guedes Advogada">
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- ══ ÁREAS ══ -->
+<div class="areas-wrap" id="areas">
+  <div class="areas-section">
+    <div class="section-header anim fade-up">
+      <span class="tag">Áreas de atuação</span>
+      <h2 class="section-title">Como podemos <em>te ajudar</em></h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="areas-grid">
+      <!-- Card 1 -->
+      <div class="area-card anim fade-up d1">
+        <div class="area-icon-wrap">
+          <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <h3>Direito do Trabalho</h3>
+        <span class="area-hook">Foi demitido sem receber o que era seu?</span>
+        <p>Orientação completa para trabalhadores CLT que sofreram demissão irregular, tiveram direitos lesados ou precisam entender verbas rescisórias. Você não precisa aceitar o que está errado.</p>
+        <div class="area-tags">
+          <span class="area-tag">Rescisão</span>
+          <span class="area-tag">Horas extras</span>
+          <span class="area-tag">Vínculo empregatício</span>
+          <span class="area-tag">Assédio moral</span>
+        </div>
+        <span class="area-card-link">
+          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
+        </span>
+      </div>
+      <!-- Card 2 -->
+      <div class="area-card anim fade-up d2">
+        <div class="area-icon-wrap">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3>Direito Previdenciário</h3>
+        <span class="area-hook">O INSS negou seu benefício?</span>
+        <p>Apoio na compreensão e solicitação de benefícios por incapacidade, BPC, auxílio-doença e aposentadoria. A documentação certa pode mudar completamente o seu resultado.</p>
+        <div class="area-tags">
+          <span class="area-tag">BPC</span>
+          <span class="area-tag">Auxílio-doença</span>
+          <span class="area-tag">Incapacidade</span>
+          <span class="area-tag">Aposentadoria</span>
+        </div>
+        <span class="area-card-link">
+          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
+        </span>
+      </div>
+      <!-- Card 3 -->
+      <div class="area-card anim fade-up d3">
+        <div class="area-icon-wrap">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3>Advocacia Preventiva</h3>
+        <span class="area-hook">Cresça sem virar réu trabalhista.</span>
+        <p>Orientação para microempreendedores e pequenos empresários que querem crescer com segurança jurídica, evitar processos e organizar sua gestão de pessoas desde o início.</p>
+        <div class="area-tags">
+          <span class="area-tag">Contratação</span>
+          <span class="area-tag">Contratos</span>
+          <span class="area-tag">Gestão trabalhista</span>
+        </div>
+        <span class="area-card-link">
+          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
+        </span>
+      </div>
+    </div>
+    <div class="section-cta anim fade-up">
+      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+         class="btn btn-gold" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Quero uma orientação
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SOBRE ══ -->
+<section id="escritorio" class="about-section">
+  <div class="about-inner">
+    <div class="about-photo-col anim slide-l">
+      <div class="about-photo-main">
+        <img src="../Fotos/GIO_8744.jpg" alt="Sueelen Guedes Advogada" loading="lazy">
+      </div>
+    </div>
+    <div class="about-text anim slide-r">
+      <span class="tag">O Escritório</span>
+      <h2 class="section-title">Advocacia com <em>escuta</em>.</h2>
+      <p class="about-sub">Porque antes de qualquer causa, existe uma pessoa.</p>
+      <blockquote class="about-quote">
+        "Bom direito não precisa soar difícil. Precisa fazer sentido para quem precisa dele."
+      </blockquote>
+      <p>O escritório Sueelen Guedes Advogados nasceu da convicção de que o direito bem explicado é o direito que realmente chega a quem precisa. Cada atendimento começa com escuta genuína — porque entender a situação real da pessoa é parte fundamental do trabalho jurídico.</p>
+      <p>Atendemos online em todo o Brasil e presencialmente em Crateús, no Ceará. Compromisso com clareza, responsabilidade e respeito a cada situação.</p>
+      <div class="values-list">
+        <div class="value-row">
+          <div class="value-icon-wrap"><i class="fa-solid fa-ear-listen"></i></div>
+          <div>
+            <strong>Escuta acolhedora</strong>
+            <span>Cada caso começa quando a pessoa sente que pode falar com segurança.</span>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="value-icon-wrap"><i class="fa-solid fa-comment-dots"></i></div>
+          <div>
+            <strong>Linguagem simples</strong>
+            <span>Direito explicado sem juridiquês e sem distância desnecessária.</span>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="value-icon-wrap"><i class="fa-solid fa-gavel"></i></div>
+          <div>
+            <strong>Segurança técnica</strong>
+            <span>Orientação fundamentada, responsável e dentro da ética da OAB.</span>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="value-icon-wrap"><i class="fa-solid fa-handshake"></i></div>
+          <div>
+            <strong>Proximidade real</strong>
+            <span>Comprometida com pessoas reais, não só com processos.</span>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta anim fade-up" style="text-align:left">
+        <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+           class="btn btn-gold" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Falar com o escritório
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EQUIPE ══ -->
+<div class="team-wrap" id="equipe">
+  <div class="team-inner">
+    <div class="section-header anim fade-up">
+      <span class="tag">Nossa equipe</span>
+      <h2 class="section-title">Profissionais que <em>ouvem</em> e orientam</h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="team-grid">
+      <!-- Sueelen -->
+      <div class="team-card anim fade-up d1">
+        <img class="team-photo" src="../Fotos/GIO_8983.jpg" alt="Sueelen Guedes" loading="lazy">
+        <div class="team-overlay"></div>
+        <div class="team-info">
+          <strong>Sueelen Guedes</strong>
+          <span>Advogada Trabalhista e Previdenciária · OAB/RN</span>
+          <div class="team-icons">
+            <a href="https://instagram.com/suellennguedes" target="_blank" rel="noopener" class="team-icon" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5584991138600" target="_blank" rel="noopener" class="team-icon" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:suellenguedesadv@gmail.com" class="team-icon" aria-label="E-mail">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Jéssica -->
+      <div class="team-card anim fade-up d2">
+        <img class="team-photo" src="../Fotos/Jessica.jpg" alt="Jéssica Estevam" loading="lazy">
+        <div class="team-overlay"></div>
+        <div class="team-info">
+          <strong>Jéssica Estevam</strong>
+          <span>Advogada Parceira · Direito Trabalhista e Previdenciário</span>
+          <div class="team-icons">
+            <a href="https://instagram.com/jessicaestevam" target="_blank" rel="noopener" class="team-icon" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta anim fade-up">
+      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+         class="btn btn-dark" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Falar com a equipe
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DEPOIMENTOS ══ -->
+<div class="testimonials-wrap">
+  <div class="testimonials-inner">
+    <div class="section-header anim fade-up">
+      <span class="tag">Depoimentos</span>
+      <h2 class="section-title">Quem passou pelo escritório <em>conta</em></h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="testimonials-grid">
+      <!-- PLACEHOLDER: substituir por depoimento real -->
+      <div class="testi-card anim fade-up d1">
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <span class="testi-big-quote">"</span>
+        <p>"Nunca imaginei que tinha tantos direitos na rescisão. A Sueelen explicou tudo de forma tão clara que me senti segura para tomar as decisões certas. O atendimento foi acolhedor do início ao fim."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MC</div>
+          <div class="testi-name">
+            <strong>Maria Clara S.</strong>
+            <span>Direito do Trabalho</span>
+          </div>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: substituir por depoimento real -->
+      <div class="testi-card anim fade-up d2">
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <span class="testi-big-quote">"</span>
+        <p>"Meu benefício tinha sido negado duas vezes pelo INSS. Com a orientação dela entendi o que estava faltando na documentação. A diferença foi enorme — explicado de forma simples, sem complicação."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JP</div>
+          <div class="testi-name">
+            <strong>João Paulo M.</strong>
+            <span>Direito Previdenciário</span>
+          </div>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: substituir por depoimento real -->
+      <div class="testi-card anim fade-up d3">
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <span class="testi-big-quote">"</span>
+        <p>"Como empreendedora, não sabia quase nada sobre legislação trabalhista. A consultoria preventiva me deu segurança para contratar corretamente e crescer sem medo de problemas futuros."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">FO</div>
+          <div class="testi-name">
+            <strong>Fernanda O.</strong>
+            <span>Advocacia Preventiva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta anim fade-up">
+      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+         class="btn btn-dark" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Quero também uma orientação
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="divider-gold anim fade-in"></div>
+    <h2 class="anim fade-up d1">Está com dúvidas sobre <em>seus direitos</em>?</h2>
+    <p class="anim fade-up d2">A informação certa pode mudar completamente o rumo de uma decisão. A primeira conversa não custa nada — e pode clarear tudo.</p>
+    <div class="cta-btns anim fade-up d3">
+      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+         class="btn btn-wpp" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Falar pelo WhatsApp
+      </a>
+    </div>
+    <span class="cta-note anim fade-in d4">Online em todo o Brasil · Presencial em Crateús/CE</span>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="../Identidade%20Visual/68.png" class="footer-logo-img" alt="Sueelen Guedes" onerror="this.style.display='none'">
+      <p class="footer-tagline">Direito trabalhista e previdenciário com escuta, clareza e responsabilidade.<br>Advocacia para gente real, em linguagem acessível.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/suellennguedes" target="_blank" rel="noopener" class="footer-soc" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5584991138600" target="_blank" rel="noopener" class="footer-soc" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="mailto:suellenguedesadv@gmail.com" class="footer-soc" aria-label="E-mail">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Contato</h5>
+      <ul>
+        <li><i class="fa-solid fa-envelope"></i><a href="mailto:suellenguedesadv@gmail.com">suellenguedesadv@gmail.com</a></li>
+        <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/5584991138600" target="_blank" rel="noopener">(84) 99113-8600</a></li>
+        <li><i class="fa-solid fa-globe"></i><span>Online · Todo o Brasil</span></li>
+        <li><i class="fa-solid fa-location-dot"></i><span>Presencial · Crateús/CE</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Links</h5>
+      <ul>
+        <li><i class="fa-solid fa-angle-right"></i><a href="#areas">Áreas de atuação</a></li>
+        <li><i class="fa-solid fa-angle-right"></i><a href="#escritorio">O Escritório</a></li>
+        <li><i class="fa-solid fa-angle-right"></i><a href="#equipe">Equipe</a></li>
+        <li><i class="fa-solid fa-angle-right"></i><a href="#">Política de privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Sueelen Guedes Advogados · Todos os direitos reservados.</p>
+    <span class="footer-oab">OAB/RN · Advocacia ética e responsável</span>
+  </div>
+</footer>
+
+<!-- ══ WHATSAPP FLOAT ══ -->
+<div class="wpp-fab">
+  <div class="wpp-fab-pulse"></div>
+  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+     target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
+
+<script>
+/* ── NAV ── */
+const nav = document.getElementById('nav');
+const navImg = document.getElementById('navImg');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+    if (navImg) navImg.style.filter = 'none';
+  } else {
+    nav.classList.remove('scrolled');
+    if (navImg) navImg.style.filter = '';
+  }
+});
+
+/* ── MOBILE MENU ── */
+const hamburger = document.getElementById('hamburger');
+const mobDrawer  = document.getElementById('mobDrawer');
+const mobOverlay = document.getElementById('mobOverlay');
+function toggleMenu() {
+  hamburger.classList.toggle('open');
+  mobDrawer.classList.toggle('open');
+  mobOverlay.classList.toggle('open');
+  document.body.style.overflow = mobDrawer.classList.contains('open') ? 'hidden' : '';
+}
+hamburger.addEventListener('click', toggleMenu);
+mobOverlay.addEventListener('click', toggleMenu);
+document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', toggleMenu));
+
+/* ── SCROLL ANIMATIONS ── */
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); animObs.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.anim').forEach(el => animObs.observe(el));
+
+</script>
+</body>
+</html>
