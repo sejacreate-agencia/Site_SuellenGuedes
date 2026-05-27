@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suellen Guedes Advogados · Direito Trabalhista e Previdenciário</title>
-  <meta name="description" content="Advocacia trabalhista e previdenciária com escuta, clareza e responsabilidade. Atendimento online em todo o Brasil e presencial em Crateús/CE.">
+  <title>Suellen Guedes Advogados · Direito do Trabalho e Previdenciário</title>
+  <!-- Favicon (opcional) -->
+  <link rel="icon" type="image/png" href="Imagens/68.png">
+  <meta name="description" content="Especialistas em Direito do Trabalho e Previdenciário. Defendemos direitos com técnica, clareza e respeito à história de cada cliente. Atendimento online em todo o Brasil e presencial em Crateús/CE.">
+  <meta name="author" content="Suellen Guedes Advogados">
+  <meta name="theme-color" content="#1A1814">
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Suellen Guedes Advogados">
+  <meta property="og:title" content="Suellen Guedes Advogados · Direito do Trabalho e Previdenciário">
+  <meta property="og:description" content="Defendemos direitos, mas cuidamos de pessoas. Atendimento online em todo o Brasil e presencial em Crateús/CE.">
+  <meta property="og:image" content="Imagens/1.jpeg">
+  <meta property="og:image:alt" content="Suellen Guedes — Advogada Trabalhista e Previdenciária">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Suellen Guedes Advogados · Direito do Trabalho e Previdenciário">
+  <meta name="twitter:description" content="Defendemos direitos, mas cuidamos de pessoas. Atendimento online em todo o Brasil e presencial em Crateús/CE.">
+  <meta name="twitter:image" content="Imagens/1.jpeg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -107,7 +127,12 @@
       box-shadow: 0 2px 24px rgba(26,24,20,.07);
       border-bottom: .5px solid var(--border);
     }
-    .nav-logo img { height: 50px; width: auto; transition: filter var(--transition); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 50px; width: auto; transition: opacity var(--transition); display: block; }
+    .nav-logo .logo-dark  { display: none; position: absolute; }
+    .nav-logo .logo-light { display: block; }
+    nav.scrolled .nav-logo .logo-light { display: none; }
+    nav.scrolled .nav-logo .logo-dark  { display: block; position: static; }
     .nav-logo .logo-text {
       font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600;
       color: var(--cream); letter-spacing: .02em; transition: color var(--transition);
@@ -230,14 +255,18 @@
     .areas-section { padding: 6rem 2rem; max-width: 1120px; margin: 0 auto; }
     .section-header { margin-bottom: 3rem; }
     .areas-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 1.75rem; margin-top: 3rem;
+      max-width: 820px; margin-left: auto; margin-right: auto;
     }
     .area-card {
       background: var(--cream); border: 1px solid var(--border);
       border-radius: var(--r-card); padding: 2.25rem 2rem;
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
       cursor: default;
+      display: flex; flex-direction: column;
     }
+    .area-card h3 + .area-hook { min-height: 3.4em; }
+    .area-card p { flex: 1; }
     .area-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-gold);
@@ -262,11 +291,19 @@
       font-family: 'Cormorant Garamond', serif; margin-bottom: .85rem; display: block;
     }
     .area-card p { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
-    .area-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .4rem; }
-    .area-tag {
-      font-size: 11px; background: var(--cream-dark); border: .5px solid var(--border);
-      color: var(--muted); padding: .28rem .7rem; border-radius: 50px;
+    .area-tags {
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px dashed var(--border);
+      display: flex; flex-wrap: wrap; gap: .45rem .5rem;
+      justify-content: center; align-content: flex-end;
     }
+    .area-tag {
+      font-size: 11px; background: transparent; border: 1px solid rgba(184,149,106,.35);
+      color: var(--muted); padding: .32rem .8rem; border-radius: 50px;
+      letter-spacing: .02em; line-height: 1.2; white-space: nowrap;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .area-card:hover .area-tag { border-color: rgba(184,149,106,.55); background: rgba(184,149,106,.06); color: var(--dark); }
     .area-card-link {
       display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.5rem;
       font-size: 13px; color: var(--gold); font-weight: 500;
@@ -281,14 +318,18 @@
     .about-section { background: var(--cream); padding: 6rem 2rem; }
     .about-inner {
       max-width: 1120px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: stretch;
     }
-    .about-photo-col { position: relative; }
+    .about-photo-col {
+      position: relative;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
     .about-photo-main {
       border-radius: var(--r-img); overflow: hidden;
       box-shadow: var(--shadow);
+      flex: 1; min-height: 420px;
     }
-    .about-photo-main img { width: 100%; height: 600px; object-fit: cover; object-position: center top; }
+    .about-photo-main img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
     /* floating accent block */
     .about-photo-badge {
       position: absolute; bottom: -1.5rem; right: -1.5rem;
@@ -308,6 +349,13 @@
     .about-text .tag { margin-bottom: .75rem; }
     .about-text h2 { font-size: clamp(1.6rem,2.2vw,2.1rem); margin-bottom: .75rem; }
     .about-sub { font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 1.25rem; font-family: 'Cormorant Garamond', serif; }
+    .about-header-block {
+      background: var(--cream-dark); border: 1px solid var(--border);
+      border-radius: var(--r-card); padding: 2rem 2rem 1.75rem;
+    }
+    .about-header-block .tag { margin-bottom: .6rem; }
+    .about-header-block h2 { font-size: clamp(1.6rem,2.4vw,2.2rem); margin-bottom: .5rem; }
+    .about-header-block .about-sub { margin-bottom: 0; }
     .about-text p { color: var(--muted); font-size: 14.5px; line-height: 1.88; margin-bottom: 1rem; }
     .about-quote {
       border-left: 2px solid var(--gold); padding-left: 1.25rem; margin: 1.75rem 0;
@@ -382,16 +430,35 @@
     /* ══════════════════════════════════════
        EQUIPE
     ══════════════════════════════════════ */
-    .team-wrap { background: var(--cream); padding: 6rem 2rem; }
+    .team-wrap { background: var(--white); padding: 6rem 2rem; }
     .team-inner { max-width: 1120px; margin: 0 auto; }
+    .team-inner .section-header { text-align: center; }
+    .team-inner .section-header .divider-gold { margin-left: auto; margin-right: auto; }
+    .team-inner .team-subtitle { margin-left: auto; margin-right: auto; }
     .team-grid {
       display: grid; grid-template-columns: repeat(2,1fr);
-      gap: 2rem; margin-top: 3rem; max-width: 720px;
+      gap: 2rem; margin: 3rem auto 0; max-width: 720px;
     }
     .team-card {
       border-radius: var(--r-img); overflow: hidden; position: relative;
-      cursor: default; transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer; transition: transform var(--transition), box-shadow var(--transition);
     }
+    .team-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .team-cta-pill {
+      display: inline-flex; align-items: center; gap: .45rem;
+      margin-top: .85rem; padding: .4rem .9rem;
+      background: rgba(184,149,106,.18); border: 1px solid rgba(184,149,106,.45);
+      border-radius: 50px;
+      font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gold-light); font-weight: 500;
+      transition: background var(--transition), border-color var(--transition), color var(--transition), gap var(--transition);
+    }
+    .team-cta-pill i { font-size: 10px; transition: transform var(--transition); }
+    .team-card:hover .team-cta-pill,
+    .team-card:focus-visible .team-cta-pill {
+      background: var(--gold); border-color: var(--gold); color: var(--dark); gap: .65rem;
+    }
+    .team-card:hover .team-cta-pill i { transform: translateX(2px); }
     .team-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(26,24,20,.18); }
     .team-photo {
       width: 100%; height: 420px;
@@ -418,20 +485,134 @@
       transition: background var(--transition), border-color var(--transition);
     }
     .team-icon:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .team-subtitle {
+      font-size: 1rem; color: var(--muted); margin-top: .5rem; max-width: 640px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .team-stats {
+      margin: 3.5rem auto 0; max-width: 900px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--r-card); padding: 2.25rem 1.5rem;
+    }
+    .team-stat {
+      text-align: center; padding: 0 1rem;
+      border-right: 1px solid var(--border);
+    }
+    .team-stat:last-child { border-right: none; }
+    .team-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      color: var(--gold); line-height: 1;
+      display: inline-flex; align-items: baseline; gap: .15rem;
+    }
+    .team-stat-num small { font-size: .55em; color: var(--gold); font-weight: 400; }
+    .team-stat-label {
+      display: block; margin-top: .65rem;
+      font-size: 12px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); font-weight: 500;
+    }
+    .team-stat-sub {
+      display: block; margin-top: .35rem;
+      font-size: 12.5px; color: var(--muted); line-height: 1.55;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+    }
+    @media (max-width: 640px) {
+      .team-stats { grid-template-columns: 1fr; padding: 1.5rem; gap: 1.5rem; }
+      .team-stat { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; }
+      .team-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+
+    /* ══════════════════════════════════════
+       BIO MODAL
+    ══════════════════════════════════════ */
+    .bio-overlay {
+      position: fixed; inset: 0; z-index: 1200;
+      background: rgba(26,24,20,.72); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; transition: opacity .3s ease;
+    }
+    .bio-overlay.open { display: flex; opacity: 1; }
+    .bio-modal {
+      background: var(--cream); border-radius: var(--r-card);
+      max-width: 820px; width: 100%; max-height: 90vh;
+      display: grid; grid-template-columns: 260px 1fr;
+      overflow: hidden; position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,.4);
+      transform: translateY(20px) scale(.98);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    .bio-overlay.open .bio-modal { transform: none; }
+    .bio-modal-photo {
+      background-size: cover; background-position: center top;
+      min-height: 360px;
+    }
+    .bio-modal-body {
+      padding: 2rem 2rem 1.75rem;
+      overflow-y: auto;
+    }
+    .bio-modal-body .tag { margin-bottom: .35rem; font-size: 10px; }
+    .bio-modal-body h3 {
+      font-size: 1.45rem; margin-bottom: .15rem;
+    }
+    .bio-modal-body .bio-role {
+      font-size: 11px; color: var(--gold);
+      letter-spacing: .07em; text-transform: uppercase;
+      margin-bottom: 1rem; display: block;
+    }
+    .bio-modal-body p {
+      font-size: 12.5px; color: var(--muted);
+      line-height: 1.7; margin-bottom: .7rem;
+    }
+    .bio-modal-body p:last-child { margin-bottom: 0; }
+    .bio-close {
+      position: absolute; top: .75rem; right: .75rem;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.9); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--dark); font-size: 14px;
+      transition: background var(--transition), transform var(--transition);
+      z-index: 2;
+    }
+    .bio-close:hover { background: var(--gold); color: var(--dark); transform: rotate(90deg); }
+    @media (max-width: 640px) {
+      .bio-modal { grid-template-columns: 1fr; max-height: 92vh; }
+      .bio-modal-photo { min-height: 240px; }
+      .bio-modal-body { padding: 1.5rem 1.5rem 1.75rem; }
+      .bio-modal-body h3 { font-size: 1.4rem; }
+    }
+
+    /* Variante: modal só texto (Política de Privacidade) */
+    .bio-modal.text-only { grid-template-columns: 1fr; max-width: 720px; }
+    .bio-modal.text-only .bio-modal-photo { display: none; }
+    .bio-modal.text-only .bio-modal-body { padding: 2.5rem 2.25rem 2rem; }
+    .bio-modal.text-only .bio-modal-body h3 { font-size: 1.6rem; margin-bottom: .25rem; }
+    .bio-modal.text-only .bio-modal-body h4 {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--dark); text-transform: uppercase; letter-spacing: .06em;
+      margin-top: 1.25rem; margin-bottom: .4rem;
+    }
+    .bio-modal.text-only .bio-modal-body h4:first-of-type { margin-top: .5rem; }
 
     /* ══════════════════════════════════════
        DEPOIMENTOS
     ══════════════════════════════════════ */
-    .testimonials-wrap { background: var(--white); padding: 6rem 2rem; }
+    .testimonials-wrap { background: var(--cream); padding: 6rem 2rem; }
     .testimonials-inner { max-width: 1120px; margin: 0 auto; }
     .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 1.75rem; margin: 3rem auto 0;
+      max-width: 880px;
     }
     .testi-card {
       border: 1px solid var(--border); border-radius: var(--r-card);
-      padding: 2.25rem 2rem; background: var(--cream);
+      padding: 2.25rem 2rem; background: var(--white);
       position: relative; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      display: flex; flex-direction: column; height: 100%;
     }
+    .testi-card p { flex: 1; }
+    .testi-author { margin-top: auto; }
     .testi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); border-color: var(--gold); }
     .testi-stars { display: flex; gap: .25rem; margin-bottom: 1.25rem; }
     .testi-stars i { color: var(--gold); font-size: 13px; }
@@ -459,16 +640,16 @@
     ══════════════════════════════════════ */
     .cta-section {
       position: relative; overflow: hidden;
-      min-height: 520px; display: flex; align-items: center;
+      min-height: 640px; display: flex; align-items: center;
     }
     .cta-bg {
       position: absolute; inset: 0;
-      background-image: url('../Fotos/GIO_8840.jpg');
-      background-size: cover; background-position: center 25%;
+      background-image: url('Imagens/5.JPEG');
+      background-size: cover; background-position: center 8%;
     }
     .cta-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(26,24,20,.88) 0%, rgba(26,24,20,.72) 100%);
+      background: linear-gradient(135deg, rgba(26,24,20,.86) 0%, rgba(26,24,20,.78) 100%);
     }
     .cta-content {
       position: relative; z-index: 1;
@@ -482,6 +663,29 @@
     .cta-note { font-size: 12px; color: rgba(247,244,239,.3); margin-top: 1.5rem; display: block; }
 
     /* ══════════════════════════════════════
+       PRE-FOOTER
+    ══════════════════════════════════════ */
+    .pre-footer {
+      background: var(--cream-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: .5px solid var(--border);
+    }
+    .pre-footer-inner { max-width: 820px; margin: 0 auto; }
+    .pre-footer h3 {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    .pre-footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════
        FOOTER
     ══════════════════════════════════════ */
     footer { background: var(--dark); padding: 4rem 2rem 2rem; }
@@ -490,12 +694,7 @@
       display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3.5rem;
       padding-bottom: 3rem; border-bottom: .5px solid rgba(247,244,239,.07); margin-bottom: 2rem;
     }
-    .footer-logo-img { height: 46px; filter: brightness(0) invert(1); opacity: .75; margin-bottom: 1.25rem; }
-    .footer-logo-text {
-      font-family: 'Cormorant Garamond', serif; color: var(--cream);
-      font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem;
-      display: none; /* show if img fails */
-    }
+    .footer-logo-img { height: 64px; width: auto; margin-bottom: 1.25rem; display: block; }
     .footer-tagline { font-size: 13px; color: rgba(247,244,239,.38); line-height: 1.8; }
     .footer-col h5 {
       font-family: 'DM Sans', sans-serif; font-size: 11px;
@@ -551,7 +750,6 @@
     ══════════════════════════════════════ */
     @media (max-width: 1024px) {
       .areas-grid { grid-template-columns: repeat(2,1fr); }
-      .testimonials-grid { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .about-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
     }
@@ -583,12 +781,11 @@
       /* testimonials */
       .testimonials-wrap { padding: 4rem 1.5rem; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      /* atend */
-      .atend-wrap { padding: 4rem 1.5rem; }
-      .atend-grid { grid-template-columns: 1fr; }
       /* cta */
       .cta-btns { flex-direction: column; align-items: center; }
       .cta-btns .btn { width: 100%; justify-content: center; max-width: 340px; }
+      /* pre-footer */
+      .pre-footer { padding: 3rem 1.5rem; }
       /* footer */
       footer { padding: 3rem 1.5rem 1.75rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -606,9 +803,8 @@
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="#inicio" class="nav-logo" id="navLogo">
-    <img src="../Identidade%20Visual/68.png" alt="Sueelen Guedes" id="navImg"
-         onerror="this.style.display='none';document.getElementById('navTxt').style.display='block'">
-    <span class="logo-text" id="navTxt" style="display:none">Sueelen Guedes <span>&amp;</span> Advogados</span>
+    <img src="Imagens/69.png" alt="Suellen Guedes Advogados" class="logo-light">
+    <img src="Imagens/68.png" alt="Suellen Guedes Advogados" class="logo-dark">
   </a>
   <ul class="nav-links">
     <li><a href="#inicio">Início</a></li>
@@ -616,7 +812,7 @@
     <li><a href="#escritorio">O Escritório</a></li>
     <li><a href="#equipe">Equipe</a></li>
   </ul>
-  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+  <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
      class="btn btn-gold" target="_blank" rel="noopener" style="border-radius:50px;font-size:13px;padding:.6rem 1.4rem">
     <i class="fa-brands fa-whatsapp"></i> Fale conosco
   </a>
@@ -634,7 +830,7 @@
     <li><a href="#escritorio" class="mob-link">O Escritório</a></li>
     <li><a href="#equipe" class="mob-link">Equipe</a></li>
   </ul>
-  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+  <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
      class="btn btn-wpp" target="_blank" rel="noopener">
     <i class="fa-brands fa-whatsapp"></i> Falar pelo WhatsApp
   </a>
@@ -644,16 +840,16 @@
 <section id="inicio" class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow anim fade-in">
-      <span class="tag">Direito Trabalhista e Previdenciário</span>
+      <span class="tag">Direito do Trabalho e Previdenciário</span>
     </div>
     <h1 class="anim fade-up d1">
-      Seus direitos merecem ser <em>entendidos</em>,<br>não só defendidos
+      Defendemos direitos,<br>mas cuidamos de <em>pessoas</em>.
     </h1>
     <p class="hero-sub anim fade-up d2">
-      Atendimento acolhedor, linguagem acessível e orientação técnica séria para trabalhadores, segurados do INSS e pequenos empresários em todo o Brasil.
+      Quando seus direitos são colocados em risco, você merece uma equipe preparada para orientar, acolher e lutar pelo que é seu.
     </p>
     <div class="hero-btns anim fade-up d3">
-      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+      <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
          class="btn btn-gold" target="_blank" rel="noopener">
         <i class="fa-brands fa-whatsapp"></i> Quero uma orientação
       </a>
@@ -664,12 +860,11 @@
     <div class="hero-badges anim fade-in d4">
       <span class="hero-badge">Trabalhista</span>
       <span class="hero-badge">Previdenciário</span>
-      <span class="hero-badge">Preventivo</span>
       <span class="hero-badge">Online · Todo o Brasil</span>
     </div>
   </div>
   <div class="hero-right">
-    <img src="../Fotos/GIO_8657.jpg" alt="Sueelen Guedes Advogada">
+    <img src="Imagens/1.jpeg" alt="Suellen Guedes Advogada">
     <div class="hero-right-overlay"></div>
   </div>
 </section>
@@ -689,17 +884,16 @@
           <i class="fa-solid fa-scale-balanced"></i>
         </div>
         <h3>Direito do Trabalho</h3>
-        <span class="area-hook">Foi demitido sem receber o que era seu?</span>
-        <p>Orientação completa para trabalhadores CLT que sofreram demissão irregular, tiveram direitos lesados ou precisam entender verbas rescisórias. Você não precisa aceitar o que está errado.</p>
+        <span class="area-hook">Protegendo os direitos de quem constrói sua história através do trabalho.</span>
+        <p>O trabalho é muito mais do que uma fonte de renda: é dignidade, segurança e sustento para você e sua família. Quando direitos são desrespeitados, é fundamental contar com uma equipe especializada para orientar e buscar a solução mais adequada para o seu caso.</p>
         <div class="area-tags">
-          <span class="area-tag">Rescisão</span>
+          <span class="area-tag">Verbas rescisórias</span>
           <span class="area-tag">Horas extras</span>
-          <span class="area-tag">Vínculo empregatício</span>
+          <span class="area-tag">Acidente de trabalho</span>
           <span class="area-tag">Assédio moral</span>
+          <span class="area-tag">Rescisão indireta</span>
+          <span class="area-tag">Vínculo empregatício</span>
         </div>
-        <span class="area-card-link">
-          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
-        </span>
       </div>
       <!-- Card 2 -->
       <div class="area-card anim fade-up d2">
@@ -707,38 +901,19 @@
           <i class="fa-solid fa-shield-halved"></i>
         </div>
         <h3>Direito Previdenciário</h3>
-        <span class="area-hook">O INSS negou seu benefício?</span>
-        <p>Apoio na compreensão e solicitação de benefícios por incapacidade, BPC, auxílio-doença e aposentadoria. A documentação certa pode mudar completamente o seu resultado.</p>
+        <span class="area-hook">Amparo jurídico para quem precisa de proteção nos momentos mais importantes da vida.</span>
+        <p>Os benefícios previdenciários existem para garantir segurança e proteção quando o trabalhador mais precisa. No entanto, nem sempre o acesso a esses direitos acontece de forma simples.</p>
         <div class="area-tags">
-          <span class="area-tag">BPC</span>
-          <span class="area-tag">Auxílio-doença</span>
-          <span class="area-tag">Incapacidade</span>
           <span class="area-tag">Aposentadoria</span>
+          <span class="area-tag">Salário-maternidade</span>
+          <span class="area-tag">Auxílio por incapacidade</span>
+          <span class="area-tag">Pensão por morte</span>
+          <span class="area-tag">BPC/LOAS</span>
         </div>
-        <span class="area-card-link">
-          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
-        </span>
-      </div>
-      <!-- Card 3 -->
-      <div class="area-card anim fade-up d3">
-        <div class="area-icon-wrap">
-          <i class="fa-solid fa-briefcase"></i>
-        </div>
-        <h3>Advocacia Preventiva</h3>
-        <span class="area-hook">Cresça sem virar réu trabalhista.</span>
-        <p>Orientação para microempreendedores e pequenos empresários que querem crescer com segurança jurídica, evitar processos e organizar sua gestão de pessoas desde o início.</p>
-        <div class="area-tags">
-          <span class="area-tag">Contratação</span>
-          <span class="area-tag">Contratos</span>
-          <span class="area-tag">Gestão trabalhista</span>
-        </div>
-        <span class="area-card-link">
-          Saiba mais <i class="fa-solid fa-arrow-right" style="font-size:12px"></i>
-        </span>
       </div>
     </div>
     <div class="section-cta anim fade-up">
-      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+      <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
          class="btn btn-gold" target="_blank" rel="noopener">
         <i class="fa-brands fa-whatsapp"></i> Quero uma orientação
       </a>
@@ -750,56 +925,60 @@
 <section id="escritorio" class="about-section">
   <div class="about-inner">
     <div class="about-photo-col anim slide-l">
+      <div class="about-header-block">
+        <span class="tag">O Escritório</span>
+        <h2 class="section-title">Advocacia que <em>escuta</em>, orienta e age.</h2>
+        <p class="about-sub">Porque antes de qualquer processo, existe uma história que merece ser compreendida.</p>
+      </div>
       <div class="about-photo-main">
-        <img src="../Fotos/GIO_8744.jpg" alt="Sueelen Guedes Advogada" loading="lazy">
+        <img src="Imagens/2.JPEG" alt="Equipe Suellen Guedes Advogados" loading="lazy">
       </div>
     </div>
     <div class="about-text anim slide-r">
-      <span class="tag">O Escritório</span>
-      <h2 class="section-title">Advocacia com <em>escuta</em>.</h2>
-      <p class="about-sub">Porque antes de qualquer causa, existe uma pessoa.</p>
       <blockquote class="about-quote">
-        "Bom direito não precisa soar difícil. Precisa fazer sentido para quem precisa dele."
+        "Uma advocacia que acolhe como uma pessoa próxima, mas atua com a segurança e a firmeza de uma especialista."
       </blockquote>
-      <p>O escritório Sueelen Guedes Advogados nasceu da convicção de que o direito bem explicado é o direito que realmente chega a quem precisa. Cada atendimento começa com escuta genuína — porque entender a situação real da pessoa é parte fundamental do trabalho jurídico.</p>
-      <p>Atendemos online em todo o Brasil e presencialmente em Crateús, no Ceará. Compromisso com clareza, responsabilidade e respeito a cada situação.</p>
+      <p>O Escritório Suellen Guedes Advogados nasceu do propósito de oferecer uma advocacia acessível, responsável e próxima das pessoas.</p>
+      <p>Atuamos de forma especializada nas áreas Trabalhista e Previdenciária, auxiliando trabalhadores, aposentados e segurados do INSS que buscam orientação segura para proteger seus direitos.</p>
+      <p>Ao longo de mais de seis anos de atuação, aprendemos que nenhum processo é igual ao outro. Por isso, valorizamos a escuta, o atendimento humanizado e a construção de estratégias jurídicas que considerem a realidade de cada cliente.</p>
+      <p>Com atendimento digital em todo o Brasil, unimos experiência técnica, comunicação clara e comprometimento para acompanhar nossos clientes em cada etapa da sua jornada.</p>
       <div class="values-list">
         <div class="value-row">
           <div class="value-icon-wrap"><i class="fa-solid fa-ear-listen"></i></div>
           <div>
-            <strong>Escuta acolhedora</strong>
-            <span>Cada caso começa quando a pessoa sente que pode falar com segurança.</span>
+            <strong>Escuta que gera confiança</strong>
+            <span>Antes de falar sobre processos, ouvimos pessoas. Compreender sua história é o primeiro passo para construir a melhor solução jurídica.</span>
           </div>
         </div>
         <div class="value-row">
           <div class="value-icon-wrap"><i class="fa-solid fa-comment-dots"></i></div>
           <div>
-            <strong>Linguagem simples</strong>
-            <span>Direito explicado sem juridiquês e sem distância desnecessária.</span>
+            <strong>Direito sem complicação</strong>
+            <span>Explicamos cada etapa do seu caso de forma clara e acessível, para que você tenha segurança nas decisões que precisa tomar.</span>
           </div>
         </div>
         <div class="value-row">
           <div class="value-icon-wrap"><i class="fa-solid fa-gavel"></i></div>
           <div>
-            <strong>Segurança técnica</strong>
-            <span>Orientação fundamentada, responsável e dentro da ética da OAB.</span>
+            <strong>Experiência que traz segurança</strong>
+            <span>Mais de seis anos de atuação em demandas trabalhistas e previdenciárias, com sólida experiência em audiências, negociações e resolução de conflitos.</span>
           </div>
         </div>
         <div class="value-row">
           <div class="value-icon-wrap"><i class="fa-solid fa-handshake"></i></div>
           <div>
-            <strong>Proximidade real</strong>
-            <span>Comprometida com pessoas reais, não só com processos.</span>
+            <strong>Presença e acompanhamento</strong>
+            <span>Atendimento próximo, comunicação transparente e suporte durante todo o processo, porque confiança também se constrói com disponibilidade.</span>
           </div>
         </div>
       </div>
-      <div class="section-cta anim fade-up" style="text-align:left">
-        <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
-           class="btn btn-gold" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Falar com o escritório
-        </a>
-      </div>
     </div>
+  </div>
+  <div class="section-cta anim fade-up">
+    <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
+       class="btn btn-gold" target="_blank" rel="noopener">
+      <i class="fa-brands fa-whatsapp"></i> Falar com o escritório
+    </a>
   </div>
 </section>
 
@@ -807,48 +986,52 @@
 <div class="team-wrap" id="equipe">
   <div class="team-inner">
     <div class="section-header anim fade-up">
-      <span class="tag">Nossa equipe</span>
-      <h2 class="section-title">Profissionais que <em>ouvem</em> e orientam</h2>
+      <span class="tag">Quem vai cuidar do seu caso</span>
+      <h2 class="section-title">Conheça as <em>advogadas</em> por trás de cada atendimento.</h2>
+      <p class="team-subtitle">Com experiência, proximidade e compromisso com a defesa dos seus direitos.</p>
       <div class="divider-gold"></div>
     </div>
     <div class="team-grid">
-      <!-- Sueelen -->
-      <div class="team-card anim fade-up d1">
-        <img class="team-photo" src="../Fotos/GIO_8983.jpg" alt="Sueelen Guedes" loading="lazy">
+      <!-- Suellen -->
+      <div class="team-card anim fade-up d1" data-bio="suellen" role="button" tabindex="0" aria-label="Ver biografia de Suellen Guedes">
+        <img class="team-photo" src="Imagens/3.JPEG" alt="Suellen Guedes" loading="lazy">
         <div class="team-overlay"></div>
         <div class="team-info">
-          <strong>Sueelen Guedes</strong>
+          <strong>Suellen Guedes</strong>
           <span>Advogada Trabalhista e Previdenciária · OAB/RN</span>
-          <div class="team-icons">
-            <a href="https://instagram.com/suellennguedes" target="_blank" rel="noopener" class="team-icon" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/5584991138600" target="_blank" rel="noopener" class="team-icon" aria-label="WhatsApp">
-              <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="mailto:suellenguedesadv@gmail.com" class="team-icon" aria-label="E-mail">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </div>
+          <span class="team-cta-pill">Saiba mais <i class="fa-solid fa-arrow-right"></i></span>
         </div>
       </div>
       <!-- Jéssica -->
-      <div class="team-card anim fade-up d2">
-        <img class="team-photo" src="../Fotos/Jessica.jpg" alt="Jéssica Estevam" loading="lazy">
+      <div class="team-card anim fade-up d2" data-bio="jessica" role="button" tabindex="0" aria-label="Ver biografia de Jéssica Estevam">
+        <img class="team-photo" src="Imagens/4.JPEG" alt="Jéssica Estevam" loading="lazy">
         <div class="team-overlay"></div>
         <div class="team-info">
           <strong>Jéssica Estevam</strong>
           <span>Advogada Parceira · Direito Trabalhista e Previdenciário</span>
-          <div class="team-icons">
-            <a href="https://instagram.com/jessicaestevam" target="_blank" rel="noopener" class="team-icon" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
+          <span class="team-cta-pill">Saiba mais <i class="fa-solid fa-arrow-right"></i></span>
         </div>
       </div>
     </div>
+    <div class="team-stats anim fade-up">
+      <div class="team-stat">
+        <span class="team-stat-num"><span class="counter" data-target="6">0</span><small>+</small></span>
+        <span class="team-stat-label">Anos de experiência</span>
+        <span class="team-stat-sub">Atuação consolidada em demandas trabalhistas e previdenciárias.</span>
+      </div>
+      <div class="team-stat">
+        <span class="team-stat-num"><span class="counter" data-target="2">0</span></span>
+        <span class="team-stat-label">Áreas de especialização</span>
+        <span class="team-stat-sub">Direito do Trabalho e Direito Previdenciário.</span>
+      </div>
+      <div class="team-stat">
+        <span class="team-stat-num"><span class="counter" data-target="100">0</span><small>%</small></span>
+        <span class="team-stat-label">Atendimento humanizado</span>
+        <span class="team-stat-sub">Audiências, negociações e resolução de conflitos.</span>
+      </div>
+    </div>
     <div class="section-cta anim fade-up">
-      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+      <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
          class="btn btn-dark" target="_blank" rel="noopener">
         <i class="fa-brands fa-whatsapp"></i> Falar com a equipe
       </a>
@@ -865,57 +1048,39 @@
       <div class="divider-gold"></div>
     </div>
     <div class="testimonials-grid">
-      <!-- PLACEHOLDER: substituir por depoimento real -->
       <div class="testi-card anim fade-up d1">
         <div class="testi-stars">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
         <span class="testi-big-quote">"</span>
-        <p>"Nunca imaginei que tinha tantos direitos na rescisão. A Sueelen explicou tudo de forma tão clara que me senti segura para tomar as decisões certas. O atendimento foi acolhedor do início ao fim."</p>
+        <p>"Deus é bom, amiga… mas o trabalho de vocês foi excepcional! Desde o início da organização das provas até me acalmarem nessa situação. Serei eternamente grata por todo esse auxílio e trabalho seu e de Jéssica. Parece que tirei uma rocha enorme das costas."</p>
         <div class="testi-author">
-          <div class="testi-avatar">MC</div>
+          <div class="testi-avatar">CV</div>
           <div class="testi-name">
-            <strong>Maria Clara S.</strong>
-            <span>Direito do Trabalho</span>
+            <strong>Cícera Vitória</strong>
+            <span>Cliente atendida</span>
           </div>
         </div>
       </div>
-      <!-- PLACEHOLDER: substituir por depoimento real -->
       <div class="testi-card anim fade-up d2">
         <div class="testi-stars">
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
         <span class="testi-big-quote">"</span>
-        <p>"Meu benefício tinha sido negado duas vezes pelo INSS. Com a orientação dela entendi o que estava faltando na documentação. A diferença foi enorme — explicado de forma simples, sem complicação."</p>
+        <p>"Muito obrigada por tudo, de coração. Vocês foram essenciais nesse processo e eu sou muito grata por toda a atenção, paciência e profissionalismo. Me senti muito amparada em cada etapa."</p>
         <div class="testi-author">
-          <div class="testi-avatar">JP</div>
+          <div class="testi-avatar">NB</div>
           <div class="testi-name">
-            <strong>João Paulo M.</strong>
-            <span>Direito Previdenciário</span>
-          </div>
-        </div>
-      </div>
-      <!-- PLACEHOLDER: substituir por depoimento real -->
-      <div class="testi-card anim fade-up d3">
-        <div class="testi-stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-        </div>
-        <span class="testi-big-quote">"</span>
-        <p>"Como empreendedora, não sabia quase nada sobre legislação trabalhista. A consultoria preventiva me deu segurança para contratar corretamente e crescer sem medo de problemas futuros."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">FO</div>
-          <div class="testi-name">
-            <strong>Fernanda O.</strong>
-            <span>Advocacia Preventiva</span>
+            <strong>Nayara Batista</strong>
+            <span>Cliente atendida</span>
           </div>
         </div>
       </div>
     </div>
     <div class="section-cta anim fade-up">
-      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+      <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
          class="btn btn-dark" target="_blank" rel="noopener">
         <i class="fa-brands fa-whatsapp"></i> Quero também uma orientação
       </a>
@@ -928,15 +1093,23 @@
   <div class="cta-bg"></div>
   <div class="cta-content">
     <div class="divider-gold anim fade-in"></div>
-    <h2 class="anim fade-up d1">Está com dúvidas sobre <em>seus direitos</em>?</h2>
-    <p class="anim fade-up d2">A informação certa pode mudar completamente o rumo de uma decisão. A primeira conversa não custa nada — e pode clarear tudo.</p>
+    <h2 class="anim fade-up d1">Seu direito merece ser <em>ouvido</em>.</h2>
+    <p class="anim fade-up d2">Se você está enfrentando um problema trabalhista ou previdenciário, nossa equipe está pronta para orientar você com clareza, responsabilidade e atenção à sua realidade.</p>
     <div class="cta-btns anim fade-up d3">
-      <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+      <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
          class="btn btn-wpp" target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> Falar pelo WhatsApp
+        <i class="fa-brands fa-whatsapp"></i> Falar com uma advogada
       </a>
     </div>
-    <span class="cta-note anim fade-in d4">Online em todo o Brasil · Presencial em Crateús/CE</span>
+    <span class="cta-note anim fade-in d4">Onde você estiver, nossa equipe está pronta para atender você.</span>
+  </div>
+</section>
+
+<!-- ══ PRE-FOOTER ══ -->
+<section class="pre-footer">
+  <div class="pre-footer-inner anim fade-up">
+    <h3>A experiência necessária. A proximidade que faz <em style="color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;">diferença</em>.</h3>
+    <p>Unimos conhecimento técnico e atendimento humanizado para acompanhar cada cliente com responsabilidade e dedicação.</p>
   </div>
 </section>
 
@@ -944,8 +1117,8 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <img src="../Identidade%20Visual/68.png" class="footer-logo-img" alt="Sueelen Guedes" onerror="this.style.display='none'">
-      <p class="footer-tagline">Direito trabalhista e previdenciário com escuta, clareza e responsabilidade.<br>Advocacia para gente real, em linguagem acessível.</p>
+      <img src="Imagens/69.png" class="footer-logo-img" alt="Suellen Guedes Advogados">
+      <p class="footer-tagline"><strong style="color:rgba(247,244,239,.7);font-weight:500;">Especialistas em Direito do Trabalho e Previdenciário.</strong><br>Defendemos direitos com técnica, clareza e respeito à história de cada cliente.</p>
       <div class="footer-socials">
         <a href="https://instagram.com/suellennguedes" target="_blank" rel="noopener" class="footer-soc" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
@@ -964,7 +1137,6 @@
         <li><i class="fa-solid fa-envelope"></i><a href="mailto:suellenguedesadv@gmail.com">suellenguedesadv@gmail.com</a></li>
         <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/5584991138600" target="_blank" rel="noopener">(84) 99113-8600</a></li>
         <li><i class="fa-solid fa-globe"></i><span>Online · Todo o Brasil</span></li>
-        <li><i class="fa-solid fa-location-dot"></i><span>Presencial · Crateús/CE</span></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -973,20 +1145,29 @@
         <li><i class="fa-solid fa-angle-right"></i><a href="#areas">Áreas de atuação</a></li>
         <li><i class="fa-solid fa-angle-right"></i><a href="#escritorio">O Escritório</a></li>
         <li><i class="fa-solid fa-angle-right"></i><a href="#equipe">Equipe</a></li>
-        <li><i class="fa-solid fa-angle-right"></i><a href="#">Política de privacidade</a></li>
+        <li><i class="fa-solid fa-angle-right"></i><a href="javascript:void(0)" id="openPrivacy">Política de privacidade</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Sueelen Guedes Advogados · Todos os direitos reservados.</p>
+    <p>© 2026 Suellen Guedes Advogados · Todos os direitos reservados.</p>
     <span class="footer-oab">OAB/RN · Advocacia ética e responsável</span>
   </div>
 </footer>
 
+<!-- ══ BIO MODAIS ══ -->
+<div class="bio-overlay" id="bioOverlay" aria-hidden="true">
+  <div class="bio-modal" role="dialog" aria-modal="true" aria-labelledby="bioName">
+    <button class="bio-close" id="bioClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="bio-modal-photo" id="bioPhoto"></div>
+    <div class="bio-modal-body" id="bioBody"></div>
+  </div>
+</div>
+
 <!-- ══ WHATSAPP FLOAT ══ -->
 <div class="wpp-fab">
   <div class="wpp-fab-pulse"></div>
-  <a href="https://wa.me/5584991138600?text=Olá, vim pelo site e gostaria de uma orientação"
+  <a href="https://wa.me/5584991138600?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o"
      target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
@@ -995,15 +1176,9 @@
 <script>
 /* ── NAV ── */
 const nav = document.getElementById('nav');
-const navImg = document.getElementById('navImg');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    nav.classList.add('scrolled');
-    if (navImg) navImg.style.filter = 'none';
-  } else {
-    nav.classList.remove('scrolled');
-    if (navImg) navImg.style.filter = '';
-  }
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
 });
 
 /* ── MOBILE MENU ── */
@@ -1027,6 +1202,120 @@ const animObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.anim').forEach(el => animObs.observe(el));
+
+/* ── COUNTERS (Team stats) ── */
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const duration = 1400;
+    const startTime = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
+
+/* ── BIO MODAIS ── */
+const bios = {
+  suellen: {
+    name: 'Dra. Suellen Guedes',
+    role: 'Advogada Trabalhista e Previdenciária · OAB/RN',
+    photo: 'Imagens/3.JPEG',
+    text: [
+      'Dra. Suellen Guedes é advogada graduada pela Universidade Potiguar (UnP), especialista em Direito do Trabalho e Direito Previdenciário, com mais de seis anos de experiência prática na advocacia trabalhista.',
+      'Ao longo de sua trajetória profissional, construiu sólida experiência na atuação judicial e extrajudicial, assessorando clientes com comprometimento, responsabilidade e elevado rigor técnico. Sua atuação é marcada pela elaboração de estratégias jurídicas personalizadas, sempre voltadas à proteção dos direitos e à obtenção de soluções eficazes para cada demanda.',
+      'Pautada pela ética, transparência e constante aperfeiçoamento profissional, busca oferecer um atendimento próximo e qualificado, aliando conhecimento jurídico aprofundado à compreensão das necessidades específicas de cada cliente. Seu objetivo é proporcionar segurança jurídica, confiança e excelência na condução de cada caso.'
+    ]
+  },
+  jessica: {
+    name: 'Dra. Jéssica Estevam',
+    role: 'Advogada Parceira · Direito Trabalhista e Previdenciário',
+    photo: 'Imagens/4.JPEG',
+    text: [
+      'Dra. Jéssica Estevam é advogada graduada pela Universidade Potiguar (UnP), especialista em Direito do Trabalho e Direito Previdenciário, com mais de seis anos de experiência na advocacia.',
+      'Sua atuação profissional é pautada pela análise criteriosa de cada caso, pelo comprometimento com a defesa dos direitos de seus clientes e pela busca de soluções jurídicas seguras e eficientes. Ao longo de sua trajetória, adquiriu ampla experiência na condução de demandas judiciais e administrativas, desenvolvendo uma atuação técnica, estratégica e orientada para resultados.',
+      'Acredita que a advocacia deve ser exercida com responsabilidade, dedicação e proximidade com o cliente, assegurando um atendimento transparente e individualizado em todas as etapas do processo. Com constante atualização profissional e profundo compromisso com a excelência jurídica, trabalha para oferecer segurança, confiança e suporte qualificado na resolução das mais diversas questões jurídicas.'
+    ]
+  }
+};
+const bioOverlay = document.getElementById('bioOverlay');
+const bioModal   = bioOverlay.querySelector('.bio-modal');
+const bioClose   = document.getElementById('bioClose');
+const bioPhoto   = document.getElementById('bioPhoto');
+const bioBody    = document.getElementById('bioBody');
+function openBio(key) {
+  const b = bios[key]; if (!b) return;
+  bioModal.classList.remove('text-only');
+  bioPhoto.style.backgroundImage = `url('${b.photo}')`;
+  bioBody.innerHTML = `
+    <span class="tag">Equipe</span>
+    <h3 id="bioName">${b.name}</h3>
+    <span class="bio-role">${b.role}</span>
+    ${b.text.map(p => `<p>${p}</p>`).join('')}
+  `;
+  showModal();
+}
+function openPrivacy() {
+  bioModal.classList.add('text-only');
+  bioBody.innerHTML = `
+    <span class="tag">Documento legal</span>
+    <h3>Política de Privacidade</h3>
+    <span class="bio-role">Última atualização: maio de 2026 · LGPD (Lei 13.709/2018)</span>
+    <p>O escritório <strong>Suellen Guedes Advogados</strong> respeita a sua privacidade e está comprometido com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+
+    <h4>1. Dados que coletamos</h4>
+    <p>Coletamos apenas os dados que você nos fornece voluntariamente ao iniciar uma conversa pelo WhatsApp ou e-mail, como nome, telefone, e-mail e informações sobre seu caso jurídico.</p>
+
+    <h4>2. Finalidade do uso</h4>
+    <p>Seus dados são utilizados exclusivamente para: (a) responder ao seu contato; (b) avaliar a viabilidade do atendimento jurídico; (c) prestar os serviços advocatícios eventualmente contratados; e (d) cumprir obrigações legais e regulatórias da OAB.</p>
+
+    <h4>3. Compartilhamento</h4>
+    <p>Seus dados <strong>não são vendidos, alugados ou compartilhados</strong> com terceiros, exceto quando estritamente necessário ao cumprimento do contrato de prestação de serviços ou por exigência legal/judicial.</p>
+
+    <h4>4. Sigilo profissional</h4>
+    <p>Todas as informações compartilhadas com o escritório estão protegidas pelo sigilo profissional do advogado, previsto no art. 7º, II, da Lei 8.906/1994 (Estatuto da OAB).</p>
+
+    <h4>5. Seus direitos</h4>
+    <p>Você pode, a qualquer momento, solicitar: confirmação de tratamento dos dados, acesso, correção, anonimização, portabilidade ou eliminação dos dados pessoais. Para exercer esses direitos, envie um e-mail para <a href="mailto:suellenguedesadv@gmail.com" style="color:var(--gold)">suellenguedesadv@gmail.com</a>.</p>
+
+    <h4>6. Cookies</h4>
+    <p>Este site não utiliza cookies de rastreamento. Pode utilizar cookies técnicos essenciais ao funcionamento da página.</p>
+
+    <h4>7. Contato</h4>
+    <p>Para dúvidas relacionadas a esta política ou ao tratamento de dados pessoais, entre em contato pelo e-mail <a href="mailto:suellenguedesadv@gmail.com" style="color:var(--gold)">suellenguedesadv@gmail.com</a> ou WhatsApp (84) 99113-8600.</p>
+  `;
+  showModal();
+}
+function showModal() {
+  bioOverlay.classList.add('open');
+  bioOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeBio() {
+  bioOverlay.classList.remove('open');
+  bioOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.team-card[data-bio]').forEach(card => {
+  card.addEventListener('click', () => openBio(card.dataset.bio));
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBio(card.dataset.bio); }
+  });
+});
+const privacyLink = document.getElementById('openPrivacy');
+if (privacyLink) privacyLink.addEventListener('click', (e) => { e.preventDefault(); openPrivacy(); });
+bioClose.addEventListener('click', closeBio);
+bioOverlay.addEventListener('click', (e) => { if (e.target === bioOverlay) closeBio(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && bioOverlay.classList.contains('open')) closeBio(); });
 
 </script>
 </body>
